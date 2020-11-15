@@ -1,10 +1,8 @@
-FROM golang:1.6
+FROM alpine:3.6
 
-RUN go get github.com/kataras/iris
+RUN sed -i 's/dl-cdn\.alpinelinux\.org/mirrors\.aliyun\.com/g' /etc/apk/repositories
 
 RUN apk update --no-cache
-
-EXPOSE 8080
 
 RUN mkdir /main
 COPY main /main/

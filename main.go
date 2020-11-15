@@ -1,8 +1,10 @@
 package main
 
 import (
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/kataras/iris"
 	"my_demo/middlewares"
+	"my_demo/models/db"
 	"my_demo/view"
 )
 
@@ -15,7 +17,7 @@ func main(){
 
 	app.UseGlobal(middlewares.AbnormalHandle,middlewares.RequestLogHandle)
 	initRouter(app)
-
+	db.InitDB()
 	//app.Get("/get_request", func(ctx iris.Context){
 	//	app.Logger().Info(ctx.Path())
 	//	//ctx.WriteString(ctx.Path())
@@ -40,7 +42,7 @@ func main(){
 	//
 	//})
 
-	app.Run(iris.Addr(":8000"),iris.WithoutServerError(iris.ErrServerClosed))
+	app.Run(iris.Addr(":8088"),iris.WithoutServerError(iris.ErrServerClosed))
 }
 
 type Person struct {
