@@ -3,6 +3,7 @@ package main
 import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/kataras/iris"
+	"my_demo/core/cache"
 	"my_demo/middlewares"
 	"my_demo/models/db"
 	"my_demo/view"
@@ -18,6 +19,7 @@ func main(){
 	app.UseGlobal(middlewares.AbnormalHandle,middlewares.RequestLogHandle)
 	initRouter(app)
 	db.InitDB()
+	cache.InitRedisPool()
 	//app.Get("/get_request", func(ctx iris.Context){
 	//	app.Logger().Info(ctx.Path())
 	//	//ctx.WriteString(ctx.Path())
