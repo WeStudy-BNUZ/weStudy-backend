@@ -35,9 +35,11 @@ services:
     build: .
     ports:
       - "8088:8088"
+    depends_on:
+      - mariadb
+      - redis
     links:
       - "mariadb"
-      - "westudyredis"
     volumes:
       - $HOME/code/go:/go
     tty: true
