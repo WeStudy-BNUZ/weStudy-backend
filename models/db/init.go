@@ -46,7 +46,7 @@ Conn:
 	Driver.SingularTable(true)
 
 	Driver.AutoMigrate(
-		&College{},&Major{},
+		&Collage{},&Major{},
 
 	)
 }
