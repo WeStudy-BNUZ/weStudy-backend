@@ -1,7 +1,7 @@
 package systemException
 
 import (
-	"grpc-demo/models"
+	"my_demo/models"
 )
 
 func SystemException() models.RestfulAPIResult {
