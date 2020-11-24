@@ -10,7 +10,7 @@ import (
 )
 
 func initRouter(app *iris.Application){
-	view.RegisterTestRouters(app)
+	view.RegisterClassifyRouters(app)
 }
 
 func main(){
@@ -18,36 +18,10 @@ func main(){
 
 	app.UseGlobal(middlewares.AbnormalHandle,middlewares.RequestLogHandle)
 	initRouter(app)
+
 	db.InitDB()
 	cache.InitRedisPool()
-	//app.Get("/get_request", func(ctx iris.Context){
-	//	app.Logger().Info(ctx.Path())
-	//	//ctx.WriteString(ctx.Path())
-	//
-	//	//user := ctx.URLParam("user")
-	//	//app.Logger().Info(user)
-	//	//ctx.HTML("<h1>"+user+"</h1>")
-	//	ctx.JSON(iris.Map{"message":"hello","requestcode":200})
-	//})
-	//
-	//app.Post("/post_login", func(ctx iris.Context){
-	//	app.Logger().Info(ctx.Path())
-	//
-	//	//user := ctx.PostValue("user")
-	//	//ctx.WriteString(user)
-	//	var person Person
-	//	if err := ctx.ReadJSON(&person);err != nil{
-	//		panic(err.Error())
-	//	}
-	//
-	//	ctx.Writef("%#+v\n",person)
-	//
-	//})
 
 	app.Run(iris.Addr(":8088"),iris.WithoutServerError(iris.ErrServerClosed))
 }
 
-type Person struct {
-	Name string `json:"name"`
-	Age int `json:"age"`
-}

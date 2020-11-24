@@ -12,12 +12,6 @@ func SystemException() models.RestfulAPIResult {
 	}
 }
 
-func sqlException() models.RestfulAPIResult {
-	return models.RestfulAPIResult{
-		Status: false,
-		ErrCode: 5001,
-		Message: "数据库操作错误, 所有操作已回滚",
-	}
-}
+
 
 
