@@ -9,7 +9,7 @@ import (
 
 //目前没写登陆，先不卡权限
 func CreateMajor(ctx iris.Context,cid int){
-	var collage db.College
+	var collage db.Collage
 	if err := db.Driver.GetOne("collage",cid,&collage);err == nil{
 		db.Driver.Delete(collage)
 	}

@@ -12,7 +12,7 @@ func CreateCollage(ctx iris.Context){
 	params := paramsUtils.NewParamsParser(paramsUtils.RequestJsonInterface(ctx))
 	name := params.Str("name","名称")
 
-	collage := db.College{
+	collage := db.Collage{
 		Name: name,
 	}
 
@@ -24,7 +24,7 @@ func CreateCollage(ctx iris.Context){
 }
 
 func PutCollage(ctx iris.Context,cid int){
-	var collage db.College
+	var collage db.Collage
 	if err := db.Driver.GetOne("collage",cid,&collage);err != nil{
 		panic(classifyException.CollageIsNotExsit())
 	}
@@ -41,7 +41,7 @@ func PutCollage(ctx iris.Context,cid int){
 }
 
 func DeleteCollage(ctx iris.Context,cid int){
-	var collage db.College
+	var collage db.Collage
 	if err := db.Driver.GetOne("collage",cid,&collage);err == nil{
 
 		//级联删除
@@ -81,7 +81,7 @@ func MgetCollage(ctx iris.Context){
 	ids := params.List("ids", "id列表")
 
 	data := make([]interface{}, 0, len(ids))
-	collages := db.Driver.GetMany("collage", ids, db.College{})
+	collages := db.Driver.GetMany("collage", ids, db.Collage{})
 	for _,collage  := range collages {
 		func(data *[]interface{}) {
 			*data = append(*data, paramsUtils.ModelToDict(collage,[]string{"ID","Name"}))
