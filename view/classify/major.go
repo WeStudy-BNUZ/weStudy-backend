@@ -19,7 +19,7 @@ func CreateMajor(ctx iris.Context,cid int){
 
 	major := db.Major{
 		Name: name,
-		CollegeID:cid,
+		CollageID:cid,
 	}
 
 	db.Driver.Create(&major)
