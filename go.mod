@@ -13,6 +13,7 @@ require (
 	github.com/flosch/pongo2 v0.0.0-20200913210552-0d938eb266f3 // indirect
 	github.com/gavv/monotime v0.0.0-20190418164738-30dba4353424 // indirect
 	github.com/go-sql-driver/mysql v1.5.0
+	github.com/gomodule/redigo v1.8.2
 	github.com/google/go-querystring v1.0.0 // indirect
 	github.com/gorilla/schema v1.2.0 // indirect
 	github.com/imkira/go-interpol v1.1.0 // indirect
@@ -32,6 +33,7 @@ require (
 	github.com/onsi/gomega v1.10.3 // indirect
 	github.com/ryanuber/columnize v2.1.2+incompatible // indirect
 	github.com/sergi/go-diff v1.1.0 // indirect
+	github.com/shoogoome/mutils v1.0.2
 	github.com/shurcooL/sanitized_anchor_name v1.0.0 // indirect
 	github.com/smartystreets/goconvey v1.6.4 // indirect
 	github.com/valyala/fasthttp v1.16.0 // indirect
