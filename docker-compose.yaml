@@ -1,17 +1,6 @@
 version: "2"
 services:
 
-  westudy:
-      build: .
-      ports:
-        - "8088:8088"
-      links:
-        - "mariadb"
-        - "westudyredis"
-      volumes:
-        - $HOME/code/go:/go
-      tty: true  
-
   mariadb:
     image: mariadb:10.2
     volumes:
@@ -41,3 +30,14 @@ services:
       - "6379:6379"
     volumes:
       - ./redis_data:/data
+
+  westudy:
+    build: .
+    ports:
+      - "8088:8088"
+    links:
+      - "mariadb"
+      - "westudyredis"
+    volumes:
+      - $HOME/code/go:/go
+    tty: true
