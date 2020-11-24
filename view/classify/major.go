@@ -8,18 +8,20 @@ import (
 )
 
 //目前没写登陆，先不卡权限
-func CreateMajor(ctx iris.Context,cid int){
+func CreateMajor(ctx iris.Context){
+	params := paramsUtils.NewParamsParser(paramsUtils.RequestJsonInterface(ctx))
+	collageID := params.Int("collage_id","学院id")
+
 	var collage db.Collage
-	if err := db.Driver.GetOne("collage",cid,&collage);err == nil{
-		db.Driver.Delete(collage)
+	if err := db.Driver.GetOne("collage",collageID,&collage);err != nil{
+		panic(classifyException.CollageIsNotExsit())
 	}
 
-	params := paramsUtils.NewParamsParser(paramsUtils.RequestJsonInterface(ctx))
 	name := params.Str("name","名称")
 
 	major := db.Major{
 		Name: name,
-		CollageID:cid,
+		CollageID:collageID,
 	}
 
 	db.Driver.Create(&major)
@@ -29,14 +31,23 @@ func CreateMajor(ctx iris.Context,cid int){
 
 }
 
-func PutMajor(ctx iris.Context,cid int,mid int){
+func PutMajor(ctx iris.Context,mid int){
 	var major db.Major
-	if err := db.Driver.Where("id = ? and collage_id = ?",mid,cid).First(&major).Error;err != nil{
+	if err := db.Driver.GetOne("major",mid,&major);err != nil{
 		panic(classifyException.MajorIsNotExsit())
 	}
 
 	params := paramsUtils.NewParamsParser(paramsUtils.RequestJsonInterface(ctx))
 	params.Diff(&major)
+	if params.Has("collage_id"){
+		collageID := params.Int("collage_id","学院id")
+
+		var collage db.Collage
+		if err := db.Driver.GetOne("collage",collageID,&collage);err != nil{
+			panic(classifyException.CollageIsNotExsit())
+		}
+		major.CollageID = collageID
+	}
 	major.Name = params.Str("name","名称")
 
 	db.Driver.Save(&major)
@@ -46,9 +57,9 @@ func PutMajor(ctx iris.Context,cid int,mid int){
 	})
 }
 
-func DeleteMajor(ctx iris.Context,cid int,mid int){
+func DeleteMajor(ctx iris.Context,mid int){
 	var major db.Major
-	if err := db.Driver.Where("id = ? and collage_id = ?",mid,cid).First(&major).Error;err == nil{
+	if err := db.Driver.GetOne("major",mid,&major);err == nil{
 		db.Driver.Delete(major)
 	}
 

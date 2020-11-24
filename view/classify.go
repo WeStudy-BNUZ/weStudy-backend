@@ -16,7 +16,7 @@ func RegisterClassifyRouters(app *iris.Application){
 	collageRouter.Get("/list", hero.Handler(classify.ListCollage))
 	collageRouter.Post("/_mget", hero.Handler(classify.MgetCollage))
 
-	majorRouter := app.Party("study/collage/{cid:int}/major")
+	majorRouter := app.Party("study/major")
 	majorRouter.Post("", hero.Handler(classify.CreateMajor))
 	majorRouter.Put("/{mid:int}", hero.Handler(classify.PutMajor))
 	majorRouter.Delete("/{mid:int}", hero.Handler(classify.DeleteMajor))
