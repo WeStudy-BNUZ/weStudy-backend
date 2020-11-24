@@ -1,6 +1,6 @@
 package db
 
-type College struct{
+type Collage struct{
 	ID int `gorm:"primary_key" json:"id"`
 	Name string `json:"name" gorm:"not null"`
 }
