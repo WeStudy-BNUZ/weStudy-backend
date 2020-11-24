@@ -3,6 +3,7 @@ package constants
 // 缓存key
 const (
 	DbModel                      = "model"                           // 数据库缓存键
+	TokenModel               = "account:token"
 )
 
 

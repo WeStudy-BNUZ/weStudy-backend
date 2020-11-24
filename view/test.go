@@ -10,4 +10,5 @@ func RegisterTestRouters(app *iris.Application){
 	testRouter := app.Party("/test")
 
 	testRouter.Get("", hero.Handler(test.Test))
+	testRouter.Get("/redis", hero.Handler(test.TestRedis))
 }
