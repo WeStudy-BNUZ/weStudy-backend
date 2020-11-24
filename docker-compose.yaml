@@ -7,7 +7,7 @@ services:
         - "8088:8088"
       links:
         - "mariadb"
-        - "westudy-redis"
+        - "westudyredis"
       volumes:
         - $HOME/code/go:/go
       tty: true  
@@ -35,7 +35,7 @@ services:
 
   redis:
     image: redis:latest
-    container_name: westudy-redis
+    container_name: westudyredis
     command: redis-server --appendonly yes --requirepass "123456"
     ports:
       - "6379:6379"
