@@ -19,14 +19,14 @@ func TestRedis(ctx iris.Context){
 	if _, err := redis.Bytes(cache.Redis.Do(
 		constants.DbNumberOther,
 		"set",
-		paramsUtils.CacheBuildKey(constants.TokenModel, token),
-		1,
+		paramsUtils.CacheBuildKey(constants.TeamTokenModel, token),
+		"1",
 		60*15)); err != nil {
 		panic("111")
 	}
 
 	ctx.JSON(iris.Map{
-		"token": token,
+		"token" :token,
 	})
 }
 
