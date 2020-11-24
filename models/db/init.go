@@ -29,7 +29,7 @@ Conn:
 			"12345678",
 			"mariadb",
 			"3306",
-			"mysql",
+			"ncdev",
 		))
 	Driver.DB = o
 	if err != nil {
