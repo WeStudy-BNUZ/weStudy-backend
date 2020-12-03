@@ -47,6 +47,7 @@ Conn:
 
 	Driver.AutoMigrate(
 		&Collage{},&Major{},
+		&Course{},
 
 	)
 }

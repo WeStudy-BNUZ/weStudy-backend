@@ -11,6 +11,7 @@ import (
 
 func initRouter(app *iris.Application){
 	view.RegisterClassifyRouters(app)
+	view.RegisterCourseRouters(app)
 }
 
 func main(){
