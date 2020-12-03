@@ -71,6 +71,14 @@ func ListCourse(ctx iris.Context){
 	limit := ctx.URLParamIntDefault("limit", 10)
 	page := ctx.URLParamIntDefault("page", 1)
 
+	if kind := ctx.URLParamIntDefault("kind", 0); kind != 0 {
+		table = table.Where("kind = ?", kind)
+	}
+
+	if class := ctx.URLParamIntDefault("class", 0); class != 0 {
+		table = table.Where("class = ?", class)
+	}
+
 	table.Count(&count).Offset((page - 1) * limit).Limit(limit).Select("id, name").Find(&lists)
 	ctx.JSON(iris.Map{
 		"courses": lists,
