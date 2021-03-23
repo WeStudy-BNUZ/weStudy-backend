@@ -23,6 +23,6 @@ func main(){
 	db.InitDB()
 	cache.InitRedisPool()
 
-	app.Run(iris.Addr(":8088"),iris.WithoutServerError(iris.ErrServerClosed))
+	app.Run(iris.Addr(":8085"),iris.WithoutServerError(iris.ErrServerClosed))
 }
 

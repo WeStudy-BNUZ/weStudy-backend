@@ -3,7 +3,7 @@ package view
 import (
 	"github.com/kataras/iris"
 	"github.com/kataras/iris/hero"
-	noMatter "my_demo/view/no_matter"
+	noMatter "my_demo/view/course"
 )
 
 func RegisterCourseRouters(app *iris.Application){

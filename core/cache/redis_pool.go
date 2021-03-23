@@ -39,7 +39,7 @@ func InitRedisPool() {
 
 func dial() (redis.Conn, error) {
 
-	conn, err := redis.Dial("tcp", fmt.Sprintf("%s:%s", "westudyredis", "6379"))
+	conn, err := redis.Dial("tcp", fmt.Sprintf("%s:%s", "47.115.174.112", "6379"))
 	if err != nil {
 		fmt.Println("[!] redis缓存服务连接异常，尝试重新链接...", err)
 		time.Sleep(time.Second * 5)

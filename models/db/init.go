@@ -27,8 +27,8 @@ Conn:
 			"%s:%s@tcp(%s:%s)/%s?charset=utf8&loc=Local",
 			"root",
 			"12345678",
-			"mariadb",
-			"3306",
+			"47.115.174.112",
+			"3311",
 			"ncdev",
 		))
 	Driver.DB = o
